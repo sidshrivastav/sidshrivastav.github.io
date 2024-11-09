@@ -23,7 +23,7 @@
 
           <div class="site-info">
             <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
+            <p class="site-description" id="subtitle">{{ site.description }}</p>
           </div>
 
           <nav>
@@ -49,3 +49,16 @@
     {% include analytics.html %}
   </body>
 </html>
+
+<<script>
+  const adjactives = [
+    'preparing lunch.', 
+    'at gym.'
+  ];
+  const randomIndex = Math.floor(Math.random() * adjactives.length);
+  let currentAdjective = adjactives[randomIndex];
+
+  document.getElementById('subtitle').textContent = `is ${currentAdjective}`;
+
+
+</script>
