@@ -1,0 +1,87 @@
+/* Base Colors 
+  Ref: https://github.com/BusinessJoe/bluemarble.nvim/blob/main/lua/bluemarble/palette.lua
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+    --background: #111111;  /* Background */
+    --foreground: #ffffff;  /* Foreground/Text */
+    --selection-background: #3a3a57;  /* Selection Background */
+    --accent-blue: #96bddb;  /* Neon Blue */
+    --accent-red: #e17373;  /* Neon Blue */
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: "Outfit", sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    max-width: 800px;
+    /* margin: 2rem auto; */
+    /* padding: 1rem; */
+  }
+  
+  h1, h2, h3 {
+    color: var(--foreground);
+  }
+  
+  a {
+    color: var(--accent-blue);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: var(--accent-red);
+    text-decoration: underline;
+  }
+  
+  /* Specific Elements */
+  header, footer {
+    color: var(--foreground);
+  }
+  
+  header {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--comment);
+  }
+  
+  /* Highlighted Areas */
+  main {}
+  
+  code {
+    background-color: var(--selection-background);
+    color: var(--foreground);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+  }
+  
+  /* Links */
+  a {
+    color: var(--accent-blue);
+  }
+  
+  a:hover {
+    color: var(--accent-red);
+  }
+  
+  /* Buttons (Example) */
+  button {
+    background-color: var(--accent-green);
+    color: var(--background);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: var(--accent-yellow);
+  }
+  
