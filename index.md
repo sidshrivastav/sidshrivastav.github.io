@@ -30,7 +30,7 @@ title: siddhant shrivastav
     - Working on my fast bowling in cricket
     - Adding fingerpicking to my guitar repertoire (slowly but surely!)
 - My vibe:
-    - Just trying to get 1% better every day
+    - Just trying to get 1% better every day.
 
 <!-- #### recent writings -->
 ### recent readings {.hero-subtitle}
