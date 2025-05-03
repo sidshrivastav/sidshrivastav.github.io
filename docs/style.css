@@ -9,85 +9,165 @@
     --foreground: #ffffff;  /* Foreground/Text */
     --selection-background: #3a3a57;  /* Selection Background */
     --accent-blue: #96bddb;  /* Neon Blue */
-    --accent-red: #e17373;  /* Neon Blue */
-    --accent-green: #94b978;
-  }
-  
-  /* Global Styles */
-  body {
+    --accent-red: #e17373;  /* Neon Red */
+    --accent-green: #94b978;  /* Neon Green */
+    --accent-yellow: #f2b34f; /* Neon Yellow (added for button hover) */
+}
+
+/* Global Styles */
+body {
     font-family: "Outfit", sans-serif;
     background-color: var(--background);
     color: var(--foreground);
-    max-width: 800px;
-    /* margin: 2rem auto; */
-    /* padding: 1rem; */
-  }
-  
-  h1, h2, h3 {
-    color: var(--foreground);
-  }
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
 
-  
-  a {
+h1, h2, h3 {
+    color: var(--foreground);
+}
+
+/* Links */
+a {
     color: var(--accent-blue);
     text-decoration: none;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     color: var(--accent-red);
     text-decoration: underline;
-  }
-  
-  /* Specific Elements */
-  header, footer {
+}
+
+/* Specific Elements */
+header, footer {
     color: var(--foreground);
-  }
-  
-  header {
+}
+
+header {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-  }
-  
-  footer {
+}
+
+footer {
     margin-top: 2rem;
     font-size: 0.8rem;
-    color: var(--comment);
-  }
-  
-  /* Highlighted Areas */
-  main {}
-  
-  code {
+    color: var(--foreground);
+}
+
+/* Highlighted Areas */
+main {
+    padding: 2rem;
+}
+
+code {
     background-color: var(--selection-background);
     color: var(--foreground);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
-  }
-  
-  /* Links */
-  a {
-    color: var(--accent-blue);
-  }
-  
-  a:hover {
-    color: var(--accent-red);
-  }
-  
-  /* Buttons (Example) */
-  button {
+}
+
+/* Buttons */
+button {
     background-color: var(--accent-green);
     color: var(--background);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: var(--accent-yellow);
-  }
+}
 
- .hero-subtitle {
-  color: var(--accent-green);
- }
-  
+button:hover {
+    background-color: var(--accent-yellow);
+}
+
+.hero-subtitle {
+    color: var(--accent-green);
+}
+
+.about-me-nav {
+  font-size: medium;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 1200px) {
+    /* Adjust layout for larger screens like tablets or smaller desktops */
+    body {
+        max-width: 95%;
+        padding: 1rem 2rem;
+    }
+
+    header {
+        font-size: 1.4rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+
+    button {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Tablet and below */
+    body {
+        max-width: 90%;
+        padding: 1rem;
+    }
+
+    header {
+        font-size: 1.2rem;
+    }
+
+    footer {
+        font-size: 0.85rem;
+    }
+
+    button {
+        padding: 0.3rem 0.6rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2, h3 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mobile and below */
+    body {
+        max-width: 100%;
+        padding: 0.5rem;
+    }
+
+    header {
+        font-size: 1.1rem;
+    }
+
+    footer {
+        font-size: 0.75rem;
+    }
+
+    button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2, h3 {
+        font-size: 1.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
