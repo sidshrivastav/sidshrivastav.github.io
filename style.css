@@ -10,6 +10,7 @@
     --selection-background: #3a3a57;  /* Selection Background */
     --accent-blue: #96bddb;  /* Neon Blue */
     --accent-red: #e17373;  /* Neon Blue */
+    --accent-green: #94b978;
   }
   
   /* Global Styles */
@@ -25,6 +26,7 @@
   h1, h2, h3 {
     color: var(--foreground);
   }
+
   
   a {
     color: var(--accent-blue);
@@ -84,4 +86,8 @@
   button:hover {
     background-color: var(--accent-yellow);
   }
+
+ .hero-subtitle {
+  color: var(--accent-green);
+ }
   

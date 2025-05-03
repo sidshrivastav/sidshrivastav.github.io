@@ -21,5 +21,8 @@
   "homepage": "https://github.com/sidshrivastav/sidshrivastav.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"
+  },
+  "dependencies": {
+    "markdown-it-attrs": "^4.3.1"
   }
 }
