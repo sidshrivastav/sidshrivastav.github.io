@@ -2,6 +2,10 @@ const markdownIt = require("markdown-it");
 const markdownItAttrs = require("markdown-it-attrs");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addCollection("articles", function (collectionApi) {
+    return collectionApi.getFilteredByTag("article").reverse();
+  });
+
   // Passthrough copy for your CSS
   eleventyConfig.addPassthroughCopy("style.css");
 
@@ -19,6 +23,7 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: ".",
       includes: "_includes",
+      layouts: "_includes/layouts",
       output: "docs",
     },
   };
