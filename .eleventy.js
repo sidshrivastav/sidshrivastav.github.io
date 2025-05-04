@@ -1,23 +1,35 @@
 const markdownIt = require("markdown-it");
 const markdownItAttrs = require("markdown-it-attrs");
+const fs = require("fs");
+const parse = require("csv-parse/sync").parse;
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addCollection("articles", function (collectionApi) {
-    return collectionApi.getFilteredByTag("article").reverse();
-  });
-
-  // Passthrough copy for your CSS
-  eleventyConfig.addPassthroughCopy("style.css");
-
-  // Configure markdown-it with the attrs plugin
+  // Add markdown-it with attributes
   let options = {
     html: true,
     breaks: true,
     linkify: true,
   };
-
   const markdownLib = markdownIt(options).use(markdownItAttrs);
   eleventyConfig.setLibrary("md", markdownLib);
+
+  // Add passthrough copy for CSS
+  eleventyConfig.addPassthroughCopy("style.css");
+
+  // Add collection for articles
+  eleventyConfig.addCollection("articles", function (collectionApi) {
+    return collectionApi.getFilteredByTag("article").reverse();
+  });
+
+  // Add global data from CSV
+  eleventyConfig.addGlobalData("reading", () => {
+    const fileContent = fs.readFileSync("data/reading.csv", "utf-8");
+    const records = parse(fileContent, {
+      columns: true,
+      skip_empty_lines: true,
+    });
+    return records;
+  });
 
   return {
     dir: {

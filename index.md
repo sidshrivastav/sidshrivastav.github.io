@@ -5,7 +5,7 @@ title: siddhant shrivastav
 
 # siddhant shrivastav [about me](/about){.about-me-nav}
 
-### recent learnings <a href="/articles" class="about-me-nav">read more</a> {.hero-subtitle}
+## recent learnings <a href="/articles" class="about-me-nav">read more</a> {.hero-subtitle}
 
 <ul>
 {% assign recentArticles = collections.articles | slice: 0, 3 %}
@@ -18,7 +18,7 @@ title: siddhant shrivastav
 
 
 <!-- #### recent writings -->
-### recent readings {.hero-subtitle}
+## recent readings {.hero-subtitle}
 - Currently reading **Death of Ivan Ilyich** by Leo Tolstoy
 - **Norwegian Wood** by Haruki Murakami  
     - Read in Feburary - April 2025

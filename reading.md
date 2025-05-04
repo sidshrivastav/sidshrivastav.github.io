@@ -1,9 +1,9 @@
 ---
-title: "Articles"
+title: "Reading Log"
 layout: home.njk
 ---
 
-# all notes <a href="/" class="about-me-nav">go back</a>
+### what i am reading now? {.hero-subtitle}
 
 <ul>
 {% for post in collections.articles %}
