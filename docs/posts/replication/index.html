@@ -2,12 +2,106 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Replication</title>
+  <title>Replication&#39;s Notes</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <main>
-    <p>This is my first article on my personal website. Welcome!</p>
+    <h1>🧬 Replication</h1>
+<p>Replication, in general, means keeping copies of data on multiple machines that are connected via a network. Why do we need replication in our system?</p>
+<h3>✅ Benefits of Replication</h3>
+<ul>
+<li><strong>Reduced access latency</strong>: Keep replicas geographically close to the user for faster access.</li>
+<li><strong>Increased availability</strong>: If one replica goes down, others are available to serve requests.</li>
+<li><strong>Improved read throughput</strong>: Multiple machines can serve read traffic concurrently.</li>
+</ul>
+<hr>
+<h2>🔄 Synchronous and Asynchronous Replication</h2>
+<h3>🔁 <strong>Synchronous Replication</strong></h3>
+<ul>
+<li>The <strong>leader node waits</strong> for an acknowledgment from the follower node before confirming a write.</li>
+<li>Ensures that data is <strong>up to date</strong> across replicas.</li>
+<li><strong>Drawback</strong>: If any follower is slow or unresponsive, it can <strong>delay writes</strong> and slow down the system.</li>
+</ul>
+<p>👉 <em>In practice</em>: One follower is often used for acknowledgment (semi-synchronous), while others update asynchronously.</p>
+<h3>⚡ <strong>Asynchronous Replication</strong></h3>
+<ul>
+<li>The <strong>leader does not wait</strong> for followers to acknowledge the write.</li>
+<li>Offers <strong>faster writes</strong>, but there's a <strong>durability risk</strong> if followers lag or fail.</li>
+<li>Provides <strong>eventual consistency</strong>, as opposed to the <strong>strong consistency</strong> of synchronous replication.</li>
+</ul>
+<hr>
+<h2>📚 Replication Log</h2>
+<p>Replication works through a replication log. There are several methods:</p>
+<h3>1. <strong>Statement-based Replication</strong></h3>
+<ul>
+<li>
+<p>Sends all <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code> statements from leader to followers.</p>
+</li>
+<li>
+<p>Followers re-execute these statements.</p>
+</li>
+<li>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Non-deterministic functions like <code>NOW()</code> may create different results.</li>
+<li>Auto-increment primary keys can limit concurrent transactions.</li>
+<li>Statements with side effects (e.g., triggers, stored procedures) can behave differently across replicas.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>2. <strong>Write-Ahead Log (WAL) Shipping</strong></h3>
+<ul>
+<li>Low-level data logs are appended and shipped to followers.</li>
+<li>Followers replay logs to recreate the data exactly.</li>
+</ul>
+<p><strong>Drawback</strong>: Not portable across different storage engines. Switching engines often requires <strong>downtime</strong>.</p>
+<hr>
+<h3>3. <strong>Logical (Row-Based) Replication</strong></h3>
+<ul>
+<li>Logs contain <strong>row-level data</strong> for <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code> (e.g., primary key for delete).</li>
+<li>Decoupled from storage engine, enabling integration with external systems.</li>
+</ul>
+<p>🎯 <em>Used for</em>: <strong>Change Data Capture (CDC)</strong> systems.</p>
+<hr>
+<h3>4. <strong>Trigger-Based Replication</strong></h3>
+<ul>
+<li>
+<p>Replication is handled at the <strong>application layer</strong> using database triggers.</p>
+</li>
+<li>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>High flexibility.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>Higher overhead.</li>
+<li>Prone to bugs and limitations compared to built-in replication methods.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>🕒 Replication Lag</h2>
+<p>Replication lag is a challenge in <strong>eventually consistent</strong> systems. Here are some strategies to deal with it:</p>
+<h3>🧠 Read Your Own Writes</h3>
+<ul>
+<li>After a write, read from the <strong>leader</strong> for a short period before switching to followers.</li>
+<li>Useful when data is changed by a <strong>single source</strong> (e.g., a user's profile page).</li>
+</ul>
+<h3>🔁 Monotonic Reads</h3>
+<ul>
+<li>Prevent reading stale data from different replicas.</li>
+<li>Enforce that a user always reads from the <strong>same follower</strong> (e.g., based on hash of user ID).</li>
+</ul>
+<h3>⏳ Consistent Prefix Reads</h3>
+<ul>
+<li>Ensure writes are <strong>applied in order</strong> on follower nodes.</li>
+<li>Prevent users from seeing out-of-order or partial updates.</li>
+</ul>
 
   </main>
 </body>
