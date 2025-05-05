@@ -6,7 +6,7 @@ layout: home.njk
 ---
 
 
-# 🧬 Replication
+# 🧬 Replication's Notes 
 
 Replication, in general, means keeping copies of data on multiple machines that are connected via a network. Why do we need replication in our system?
 

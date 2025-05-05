@@ -21,16 +21,6 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByTag("article").reverse();
   });
 
-  // Add global data from CSV
-  eleventyConfig.addGlobalData("reading", () => {
-    const fileContent = fs.readFileSync("data/reading.csv", "utf-8");
-    const records = parse(fileContent, {
-      columns: true,
-      skip_empty_lines: true,
-    });
-    return records;
-  });
-
   return {
     dir: {
       input: ".",
